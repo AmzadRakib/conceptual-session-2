@@ -44,6 +44,7 @@
 .card-image {
     width: 50%;
     height: 100%;
+    position: relative;
 }
 
 .card-image img {
@@ -51,6 +52,7 @@
     height: 100%;
     object-fit: cover;
     object-position: left;
+    filter: grayscale(100%);
 }
 
 .card-title {
@@ -69,4 +71,73 @@
     font-family: var(--secondary-font);
     display: flex;
     gap: 25px;
+}
+
+.overlay {
+    background-color: var(--violet);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+    opacity: 0.3;
+    /* height: 100%;
+    width: 100%; */
+    z-index: 444;
+    transition: all ease-in-out 300ms;
+}
+
+.card:hover {
+    border: 1px solid blue;
+}
+
+.card:hover .overlay {
+    opacity: 0;
+}
+
+.card:hover .card-image img {
+    filter: grayscale(0%);
+}
+
+@media only screen and (max-width:1200px) {
+
+    .card-text {
+        width: 70%;
+    }
+
+    .card-image {
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .card {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 80vh;
+    }
+
+    .card-text {
+        width: 100%;
+        padding: 40px;
+    }
+
+    .card-image {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:500px) {
+    .card-text {
+        height: 70%;
+        padding: 25px;
+    }
+
+    .card-image {
+        height: 30%;
+    }
+
+    .card-title>h1 {
+        font-size: 1.5rem;
+    }
 }
